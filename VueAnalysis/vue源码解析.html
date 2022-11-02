@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ str }}</h1>
+        {{ str }}
+
+        <!-- 事件 -->
+        <div style="margin-top: 20px;">
+            <button @click="but">事件添加</button>
+            <button @click="buts">buts</button>
+        </div>
+        <!-- v-model -->
+        <div style="margin-top: 20px;">
+            <input type="text" v-model="str" />
+        </div>
+    </div>
+    
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            str:"哈哈哈",
+            sum:1
+        },
+        beforeCreate() {
+         console.log('beforeCreate',this.$data,this.$el);   
+        },
+        created() {
+         console.log('created',this.$data,this.$el);   
+        },
+        beforeMount() {
+         console.log('beforeMount',this.$data,this.$el);   
+        },
+        mounted() {
+         console.log('mounted',this.$data,this.$el);   
+        },
+        methods: {
+            but(e){
+                console.log("绑定的事件","事件对象：",e)
+            },
+            buts(e){
+                this.str = "嘻嘻嘻"
+                console.log("直接打印data中的数据",this.str,this)
+            }
+        },
+    })
+
+</script>
+</html>
